@@ -81,3 +81,94 @@ Percorremos objetos a partir das chaves utilizando for…in, iterando sobre as p
 Para extrair chaves e valores de objetos é possivel utilizar métodos de Object
 Funções como .entries, .key, .value podem ser uteis na hora de trabalhar com objetos
 Spread Operator (ou sintaxe de espalhamento) pode ser uma opção para decompor objetos quando precisamos extrailos de um array e formar um novo array
+
+## 04. Prototype
+
+Além do nome e do valor, cada propriedade tem também três atributos:
+
+Writable: Define se a propriedade pode ser adicionada a (ou escrita em) um objeto;
+Enumerable: Define se a propriedade é retornada, por exemplo, em um loop for…in ou utilizando Object.keys() / Object.values() / Object.entries().  Ou seja, se a propriedade é enumerável
+Configurable: Específica se a propriedade pode ser modificada ou deletada. Ou seja, se é configurável
+
+Por definição, todas as propriedades de um objeto criadas durante o desenvolvimento tem estes três atributos como true. Já a maior parte das propriedades herdadas do protótipo tem estes atributos como false e não podem ser enumeradas, adicionadas ou alteradas.
+
+O JavaScript utiliza o termo own property (propriedade própria) para se referir às propriedades que pertencem ao objeto (como os exemplos nome, cpf, e email) e que não são herdadas do protótipo
+
+Utilizamos o método Object.getOwnPropertyDescriptor() para descrever os atributos de uma parâmetro teremos:
+
+value : “valor do parâmetro",
+writable: true,
+enumerable: true,
+configurable: true
+
+Métodos que começam com getOwnPropriety… funcionam apenas em propriedades próprias do objeto.
+
+Objetos criados de forma literal (const obj = {a: 1}) utilizam Object.prototype como protótipo; objetos criados com new a partir de um construtor herdam a propriedade prototype de sua função construtora; Objetos criados com Object.create() recebem como prototype o primeiro parâmetro da função - que pode ser null
+
+
+Através da propriedade Prototype que acessamos o protótipo de um objeto para manipulá-lo, podendo adicionar propriedades e funções. Novos objetos criados herdarão essas características e comportamentos diretos do protótipo.
+
+Existe um protótipo associado ao uso de objetos literais no JavaScript para a herança de atributos e funções já definidos. Quase todo objeto em JavaScript tem associado a ele um segundo objeto, seu protótipo, que lhe confere uma série de atributos e funções
+
+
+
+No JavaScript o protótipo representa um objeto “modelo” com seus métodos, utilizado como base para a criação de outros objetos
+Acessamos propriedades de protótipo através de __proto__ e da propriedade prototype;
+A herança de protótipo utiliza, para a criação de dados primitivos, arrays e objetos com JavaScript
+
+
+## 05. Orientação a Objeto
+
+### Atributos e Métodos
+
+uma Classe define os atributos (características) e os métodos (comportamentos) de um objeto
+
+Herança : É um mecanismo da OO que permite que uma classe herde características de uma outra classe extends
+super
+
+
+Objeto: É uma instância de uma classe
+
+—---------------------------------------------------------------
+
+Orientação a Objetos é um modelo (estilo) de se programar
+
+A ideia é transformar coisas do mundo real para o código
+
+Uma classe tem atributos e métodos
+
+Um objeto é uma instância de classe em memória
+
+
+
+
+## this : Representa o objeto que executa a função. Podemos dizer que a instrução passada para o JavaScript é : ”execute a função aqui, utilizando este contexto”.
+No caso de atributos das funções construtoras ou dos construtores de classe, o this tem função similar: podemos dizer que o construtor recebe os atributos deste objeto
+
+3 métodos para manipular o this:
+
+call()
+Permite que uma função seja chamada com parâmetros e valor de this específicos.
+
+O parâmetro do método call() se refere ao objeto que será usado como contexto do this e, do segundo parâmetro em diante, são passados os argumentos que a função deve receber. 
+
+apply()
+Funciona de maneira semelhante ao call(), porém recebe os argumentos em um array ao invés de separados
+
+Utilizamos o método apply() caso tenhamos um array de dados e o call() passamos valores individuais como parâmetro. Lembramos que o array precisa seguir a ordem correta dos parâmetros informados na função
+
+bind()
+“Prende” ou “liga” uma função ao contexto de um objeto
+
+
+Em um paradigma de Orientação a Objetos, uma classe define um modelo base usado na criação de objetos na memória do computador
+    Na orientação a objetos uma classe serve como uma planta que descreve os atributos e comportamentos comuns a objetos de um mesmo tipo
+
+Na Construção de uma classe em JavaScript, além da palavra reservada class, devemos também definir uma função construtora (que inicializa as propriedades de objetos) quando ele for criado
+    No JavaScript temos a definição de um método construtor para a inicialização das propriedades de objetos no momento da sua instanciação em memória
+
+
+Classe e objetos são alguns dos principais conceitos da Programação Orientada a Objetos;
+
+Utilizamos ma classe como modelo para construir objetos com propriedades e métodos
+Para criar objetos a partir de modelos específicos herdamos de uma classe utilizando o extends 
